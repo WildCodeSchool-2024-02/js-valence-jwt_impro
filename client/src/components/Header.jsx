@@ -5,8 +5,8 @@ export default function Header() {
     <header>
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/">Login</NavLink>
-        <NavLink to="/">Register</NavLink>
+        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/register">Register</NavLink>
       </nav>
     </header>
   );
