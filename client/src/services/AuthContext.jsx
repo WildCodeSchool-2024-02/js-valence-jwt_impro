@@ -5,7 +5,7 @@ const AuthContext = createContext();
 export function AuthContextProvider({ children }) {
   const [token, setToken] = useState();
 
-  const state = useMemo(() => ({ token, setToken }), []);
+  const state = useMemo(() => ({ token, setToken }), [token]);
 
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;
 }

@@ -6,13 +6,20 @@ const router = express.Router();
 // Import And Use Routers Here
 /* ************************************************************************* */
 
-const itemsRouter = require("./items/router");
-const usersRouter = require("./users/router");
 const authController = require("../../controllers/authActions");
+const userController = require("../../controllers/userActions");
+const itemsController = require("../../controllers/itemActions");
 
-router.use("/items", itemsRouter);
-router.use("/users", usersRouter);
-router.post("/login", authController.login);
+const { hashPassword, verifyPassword } = require("../../services/auth");
+
+router.use("/items", itemsController.browse);
+router.post("/users", hashPassword, userController.add);
+router.post(
+  "/login",
+  authController.getUserWithPassword,
+  verifyPassword,
+  authController.login
+);
 
 /* ************************************************************************* */
 
