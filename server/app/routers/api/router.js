@@ -8,9 +8,11 @@ const router = express.Router();
 
 const itemsRouter = require("./items/router");
 const usersRouter = require("./users/router");
+const authController = require("../../controllers/authActions");
 
 router.use("/items", itemsRouter);
 router.use("/users", usersRouter);
+router.post("/login", authController.login);
 
 /* ************************************************************************* */
 
