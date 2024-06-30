@@ -8,16 +8,6 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 
-const fetchItems = async () => {
-  let results;
-  try {
-    results = await fetch(`${import.meta.env.VITE_API_URL}/api/items`);
-  } catch (err) {
-    console.error(`Something bad happend :/`, err);
-  }
-  return results.json();
-};
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,7 +16,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: fetchItems,
       },
       {
         path: "/register",

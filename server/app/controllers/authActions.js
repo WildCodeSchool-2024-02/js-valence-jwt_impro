@@ -1,7 +1,13 @@
+const jwt = require("jsonwebtoken");
 const tables = require("../../database/tables");
 
 const login = (req, res) => {
-  res.json({ token: "oui oui, va y entre" });
+  const payload = {
+    sub: req.user.id,
+  };
+
+  const token = jwt.sign(payload, process.env.APP_SECRET, { expiresIn: "1h" });
+  res.json({ token });
 };
 
 const getUserWithPassword = async (req, res, next) => {
